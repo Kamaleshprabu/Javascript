@@ -13,7 +13,6 @@ var val=document.getElementById("val")
 function add(){
     var oneval= Number(one.value)
     var twoval= Number(two.value)
-    // var three= oneval+twoval
     val.textContent= "Result:"+ (oneval+twoval)
 }
 
@@ -82,7 +81,7 @@ inputvalue = document.getElementById("inputvalue")
 result = document.getElementById("result")
 
 function calcu(){
-    result.innerText= result.textContent + ((inputvalue.value * 9 / 5) + 32).toFixed(2)
+    result.innerText = result.textContent + ((inputvalue.value * 9 / 5) + 32).toFixed(2)
 }
 
 
@@ -103,10 +102,10 @@ function ramcall(){
 
 
 const textplace = document.getElementById("textplace")
-let sayslength = document.getElementById("sayslength")
+const sayslength = document.getElementById("sayslength")
 
 function callength(){
-    let textlength = textplace.innerText
+    let textlength = textplace.textContent
     console.log(textlength.length)
-    sayslength.innerText = textlength.length
+    sayslength.textContent = textlength.length
 }
