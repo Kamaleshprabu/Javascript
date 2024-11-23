@@ -109,3 +109,33 @@ function callength(){
     console.log(textlength.length)
     sayslength.textContent = textlength.length
 }
+
+let result_div = document.createElement("div").setAttribute("id", "result")
+document.getElementById("button").addEventListener("click", function(){
+
+    switch (document.getElementById(mark).value > 80 && document.getElementById("radio1").ariaChecked){
+        
+    }
+    result_div.innerHTML = `<h1>  </h1>`
+    document.getElementById("container").appendChild(result_div)
+})
+
+var box = document.getElementById("box")
+let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+document.getElementById("clr_btn").addEventListener("click", rdm_clr)
+
+function rdm_clr(){
+    let clr = '#'
+    for (i = 0; i < 6; i++){
+        clr += add_clr()
+    }
+    console.log(clr)
+    box.style.backgroundColor = clr
+    document.getElementById("clr_name").textContent = clr
+}
+
+function add_clr(){
+    let rdm_index = Math.floor(Math.random() * 16)
+    console.log(rdm_index)
+    return arr[rdm_index]
+}
