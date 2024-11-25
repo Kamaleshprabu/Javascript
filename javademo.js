@@ -120,6 +120,8 @@ document.getElementById("button").addEventListener("click", function(){
     document.getElementById("container").appendChild(result_div)
 })
 
+//random color generation
+
 var box = document.getElementById("box")
 let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
 document.getElementById("clr_btn").addEventListener("click", rdm_clr)
@@ -139,3 +141,104 @@ function add_clr(){
     console.log(rdm_index)
     return arr[rdm_index]
 }
+
+//ForEach Example
+let arr2 = ['confier', 'siga', 'Gvnt', 'sivasakthi']
+
+arr2.forEach( val =>{
+    const opt = document.createElement('option')
+    opt.textContent = val
+    opt.value = val
+    document.getElementById("select").appendChild(opt)
+})
+
+//Map Example
+let arr3 = [25, 50, 75, 100, 125]
+
+arrofsum = arr3.map(x => x + x)
+console.log(arrofsum)
+
+//Filter Example
+
+let arrOfFiltered = arr3.filter(arr_filter)
+function arr_filter(val){
+    return val <= 100
+}
+console.log(arrOfFiltered)
+
+let arr2d = [
+    ['a', 'b', 'c'],
+    ['c', 'd', 'f'],
+    ['d', 'f', 'g']
+]
+
+let count = arr2d.flat().reduce((accumulator, curval) => {
+    if (accumulator[curval])
+        accumulator[curval]++
+    else
+        accumulator[curval] = 1
+    return accumulator
+}, {})
+console.log(count)
+
+//Closure example
+function add(x){
+    return function(y){
+        return x + y
+    }
+}
+
+let addWithY = add(10)
+addWithY(5)
+
+let fstnum = 10
+
+function funSum(num){
+    let sndNum =20
+    function funSum2(num2){
+        return fstnum + sndNum + num + num2
+    }
+    return funSum2
+}
+
+let Addition = funSum(30)
+console.log(Addition(40))
+
+//Exercise
+//Ex1
+let numArr = [4, 6, 2, 3, 1, 1, 3, 5, 7, 8, 4, 3]
+
+pureArr = numArr.reduce((accumulator, x) => {
+    if(accumulator[x])
+        null
+    else
+        accumulator.push(x) 
+    return accumulator
+}, [])
+console.log(pureArr)
+
+//Ex2
+
+let Name = 'Robert Downey Jr'
+
+abbservation = Name.split(" ").map(x =>{
+    return x.charAt(0)
+})
+console.log(abbservation.join(''))
+
+//Ex3
+
+let Input = [6, -5, 8, -2, 5, 6, -1]
+
+let findPos = Input.filter(x => x > 0)
+console.log(findPos)
+
+function sumOfPos(){
+    let sum = findPos.reduce((sum, x) => sum += x)
+    return sum
+}
+findSum = sumOfPos()
+console.log(findSum)
+
+let findSumOfPos = Input.filter(x => x > 0).reduce((sum, x) => sum += x)
+console.log(findSumOfPos)
