@@ -242,3 +242,28 @@ console.log(findSum)
 
 let findSumOfPos = Input.filter(x => x > 0).reduce((sum, x) => sum += x)
 console.log(findSumOfPos)
+
+//Digital Clock
+
+function digitalClock(){
+    let time = new Date();
+
+    hr = time.getHours()
+    min = time.getMinutes()
+    sec = time.getSeconds()
+
+    if(hr > 12){
+        hr - 12;
+        document.getElementById("am-pm").textContent = "PM"
+    }
+
+    document.getElementById("hours").textContent = padZero(hr);
+    document.getElementById("mins").textContent = padZero(min);
+    document.getElementById("secs").textContent = padZero(sec);
+}
+
+setInterval(digitalClock, 500)
+
+function padZero(num){
+    return num < 10 ? "0" + num: num;
+}
