@@ -267,3 +267,51 @@ setInterval(digitalClock, 500)
 function padZero(num){
     return num < 10 ? "0" + num: num;
 }
+
+//PROMISE - Example
+
+let frdA = new Promise((resolve, reject) => {
+    let reach = true
+    if(reach)
+        setTimeout(resolve, 3000, "Ram reached")
+    else
+        reject("Ram not reached")
+})
+
+let frdB = new Promise((resolve, reject) => {
+    let reach = false
+    if(reach)
+        setTimeout(resolve, 2000, "mani reached")
+    else
+        reject("mani not reached")
+})
+
+let frdC = new Promise((resolve, reject) => {
+    let reach = false
+    if(reach)
+        setTimeout(resolve, 1000, "Raja reached")
+    else
+        reject("Raja not reached")
+})
+
+//STATIC METHODS IN PROMISE
+
+//Promise.all 
+Promise.all([frdA, frdB, frdC])
+.then((message) => console.log(message))
+.catch((message) => console.log(message))
+
+//Promise.allSettled
+Promise.allSettled([frdA, frdB, frdC])
+.then((message) => console.log(message))
+.catch((message) => console.log(message))
+
+//Promise.any
+Promise.any([frdA, frdB, frdC])
+.then((message) => console.log(message))
+.catch((message) => console.log(message))
+
+//Promise.race
+Promise.race([frdA, frdB, frdC])
+.then((message) => console.log(message))
+.catch((message) => console.log(message))
