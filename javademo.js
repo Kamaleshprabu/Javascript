@@ -110,6 +110,7 @@ function callength(){
     sayslength.textContent = textlength.length
 }
 
+//Switch - Example
 let result_div = document.createElement("div").setAttribute("id", "result")
 document.getElementById("button").addEventListener("click", function(){
 
@@ -158,7 +159,7 @@ let arr3 = [25, 50, 75, 100, 125]
 arrofsum = arr3.map(x => x + x)
 console.log(arrofsum)
 
-//Filter Example
+//Filter Example-1
 
 let arrOfFiltered = arr3.filter(arr_filter)
 function arr_filter(val){
@@ -166,12 +167,14 @@ function arr_filter(val){
 }
 console.log(arrOfFiltered)
 
+//Example-2
+
 let arr2d = [
     ['a', 'b', 'c'],
     ['c', 'd', 'f'],
     ['d', 'f', 'g']
 ]
-
+//flat used to convert multi dimensional array into single dimensional array
 let count = arr2d.flat().reduce((accumulator, curval) => {
     if (accumulator[curval])
         accumulator[curval]++
@@ -181,7 +184,8 @@ let count = arr2d.flat().reduce((accumulator, curval) => {
 }, {})
 console.log(count)
 
-//Closure example
+
+//Closure Example-1
 function add(x){
     return function(y){
         return x + y
@@ -189,8 +193,9 @@ function add(x){
 }
 
 let addWithY = add(10)
-addWithY(5)
+console.log(addWithY(5))
 
+//Example-2
 let fstnum = 10
 
 function funSum(num){
@@ -315,3 +320,49 @@ Promise.any([frdA, frdB, frdC])
 Promise.race([frdA, frdB, frdC])
 .then((message) => console.log(message))
 .catch((message) => console.log(message))
+
+//ERROR HANDLING - Example
+
+try{
+    let num = 10 //prompt("Enter a number")
+    if(isNaN(num))
+        throw "Enter a Valid Number"
+    console.log(num ** 2)
+       
+}
+catch(error){
+    console.log(error)
+}
+finally{
+    console.log("Try again")
+}
+
+//API - Example
+
+// Step 1 - Requesting info from server
+fetch('https://official-joke-api.appspot.com/jokes/programming/random')
+
+// Step 2 - Converting response from json content to javascript object
+.then((res) => res.json())
+
+// Step 3 - Accessing info from an array of object (javascript)
+.then((msg) => console.log(msg[0].setup, msg[0].punchline))
+
+// Step 4 - To caught an error, incase there is an error on fetching
+.catch((error) => console.log(error)) 
+
+//Example 2 - Checking before conterting json format into javascript object
+
+fetch('https://official-joke-api.appspot.com/jokes/programming/random')
+.then( response => {
+    //checking before converting
+    if( response.ok )
+        console.log("Success")
+    else
+        console.log("failed")
+    //converting json to javascript object
+    // console.log(response.json())
+    return response.json()
+})
+.then( msg => console.log(msg[0].setup, msg[0].punchline))
+.catch(error => console.log(error))
