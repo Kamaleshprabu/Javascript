@@ -366,3 +366,48 @@ fetch('https://official-joke-api.appspot.com/jokes/programming/random')
 })
 .then( msg => console.log(msg[0].setup, msg[0].punchline))
 .catch(error => console.log(error))
+
+
+// Real-Time currency converter using API
+fetch(`https://api.frankfurter.app/currencies`)
+.then(response => response.json())
+.then(result => displayDropDown(result))
+
+let select = document.querySelectorAll(".currency")
+
+function displayDropDown(result){
+    // console.log(result) - result in object
+    // Object.entries() - Used to convert an object to array format
+    // After that the result in object format convert into 2D array
+    let currency = Object.entries(result)
+    //currency - 2D array
+    for( let i = 0; i < currency.length; i++ ){
+        let option = `<option value="${currency[i][0]}">${currency[i][0]}</option>`
+        select[0].innerHTML += option
+        select[1].innerHTML += option
+    }
+}
+
+let inputAmt = document.getElementById("amt-from")
+let covertedAmt = document.getElementById("amt-to")
+let errorText = document.getElementById("errorMsg")
+
+document.getElementById("convert").addEventListener("click", () => {
+    let curr1 = select[0].value
+    let curr2 = select[1].value
+    let amount = inputAmt.value
+    if (curr1 === curr2)
+        errorText.style.color = "red"
+    else
+        errorText.style.color = "transparent"
+        convertAmt(curr1, curr2, amount)
+})
+
+function convertAmt(curr1, curr2, amount){
+    fetch(`https://api.frankfurter.dev/v1/latest?base=${curr1}&symbols=${curr2}`)
+    .then((resp) => resp.json())
+    .then((data) => {console.log(data)
+      const convertedAmount = (amount * data.rates[curr2]).toFixed(2);
+      covertedAmt.value = convertedAmount
+    });
+}
